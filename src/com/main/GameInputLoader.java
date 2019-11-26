@@ -15,29 +15,48 @@ public final class GameInputLoader {
     }
 
     public GameInput load() {
-        List<Integer> assetsIds = new ArrayList<>();
-        List<String> playerOrder = new ArrayList<>();
-        int rounds = 0;
-        int noPlayers = 0;
-        int noGoods = 0;
+        ArrayList<String> types = new ArrayList<String>();
+        ArrayList<Integer> xl = new ArrayList<Integer>();
+        ArrayList<Integer> yl = new ArrayList<Integer>();
 
-        int length;
-        int height;
+        int rounds = 0;
+        int length = 0;
+        int height = 0;
+        int noPlayers = 0;
+
+        char[][] map = new char[100][100];
+        char[][] moves= new char[100][100];
 
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
 
             height = fs.nextInt();
             length = fs.nextInt();
-            char mm = fs.n
-            for (int i = 0; i < noPlayers; ++i) {
-                playerOrder.add(fs.nextWord());
+            map = new char[height][length];
+            for (int i = 0; i < height; ++i) {
+                String temp = fs.nextWord();
+
+                for(int j = 0; j < temp.length(); ++j) {
+
+                    map[i][j] = temp.charAt(j);
+                }
             }
 
-            noGoods = fs.nextInt();
+            noPlayers= fs.nextInt();
 
-            for (int i = 0; i < noGoods; ++i) {
-                assetsIds.add(fs.nextInt());
+            for (int i = 0; i < noPlayers; ++i) {
+                types.add(fs.nextWord());
+                xl.add(fs.nextInt());
+                yl.add(fs.nextInt());
+            }
+
+            rounds = fs.nextInt();
+            moves = new char[rounds][noPlayers];
+            for(int i = 0; i < rounds; ++i) {
+                String temp = fs.nextWord();
+                for(int j = 0; j < temp.length(); ++j) {
+                    moves[i][j] = temp.charAt(j);
+                }
             }
 
             fs.close();
@@ -46,6 +65,6 @@ public final class GameInputLoader {
             e1.printStackTrace();
         }
 
-        return new GameInput(rounds, assetsIds, playerOrder);
+        return new GameInput(types, xl, yl, rounds, length, height, noPlayers, map, moves);
     }
 }
