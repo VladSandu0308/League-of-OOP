@@ -28,10 +28,12 @@ public class Main {
         System.out.println(Arrays.deepToString(realMap));
 
         PlayerFactory playerFactory = PlayerFactory.getInstance();
-        playerFactory.makeList(gameInput.getTypes(), gameInput.getXl(), gameInput.getYl());
+        playerFactory.makeList(gameInput.getTypes(), gameInput.getXl(), gameInput.getYl(), realMap);
         ArrayList<Player> pl = playerFactory.getPlayers();
 
         System.out.println(pl.get(0).getClass());
+
+
 
     }
 }

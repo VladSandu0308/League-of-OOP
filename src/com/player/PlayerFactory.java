@@ -14,26 +14,26 @@ public class PlayerFactory {
         players.add(c);
     }
 
-    public void makeList(ArrayList<String> type, ArrayList<Integer> xl, ArrayList<Integer> yl) {
+    public void makeList(ArrayList<String> type, ArrayList<Integer> xl, ArrayList<Integer> yl, Cell[][] map) {
         int i = Constants.ZERO, j = Constants.ZERO;
         Player c;
         System.out.println(type.size());
         for (i = Constants.ZERO; i < type.size(); ++i) {
             switch(type.get(i)) {
                 case "W":
-                    c = new Wizard(Constants.WIZARD_HP, xl.get(i), yl.get(i));
+                    c = new Wizard(Constants.WIZARD_HP, xl.get(i), yl.get(i), map);
                     break;
                 case "K":
-                    c = new Knight(Constants.KNIGHT_HP, xl.get(i), yl.get(i));
+                    c = new Knight(Constants.KNIGHT_HP, xl.get(i), yl.get(i), map);
                     break;
                 case "P":
-                    c = new Pyromancer(Constants.PYROMANCER_HP, xl.get(i), yl.get(i));
+                    c = new Pyromancer(Constants.PYROMANCER_HP, xl.get(i), yl.get(i), map);
                     break;
                 case "R":
-                    c = new Rogue(Constants.ROGUE_HP, xl.get(i), yl.get(i));
+                    c = new Rogue(Constants.ROGUE_HP, xl.get(i), yl.get(i), map);
                     break;
                 default:
-                    c = c = new Wizard(0,0,0);
+                    c = c = new Wizard(0,0,0, map);
                     break;
             }
             this.addPlayer(c);

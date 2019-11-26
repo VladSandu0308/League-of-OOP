@@ -10,14 +10,19 @@ public final class Constants {
     public static final int PYROMANCER_HP = 500;
     public static final int ROGUE_HP = 600;
 
-    public static final int TEN = 10;
-    public static final int ITEMS = 15;
-    public static final int COINS = 80;
-    public static final int NINE = 9;
-    public static final int FIVE = 5;
-    public static final int ILLEGAL = 19;
-    public static final int SIZE = 21;
-    public static final int MINCOINS = 16;
-    public static final int THREE = 3;
-    public static final int EIGHT = 8;
+    public static final int ROGUE_ONE_DAMAGE = 200;
+
+    public static final double ROGUE_LAND_MODIFIER = 0.15;
+    public static final double ROGUE_LAND_BONUS = 1.5;
+
+    public static final double ROGUE_ONE_ROGUE = 0.20;
+    public static final double ROGUE_ONE_KNIGHT = -0.10;
+    public static final double ROGUE_ONE_PYROMANCER = 0.25;
+    public static final double ROGUE_ONE_WIZARD = 0.25;
+
+    public static final double ROGUE_TWO_ROGUE = -0.10;
+    public static final double ROGUE_TWO_KNIGHT = -0.20;
+    public static final double ROGUE_TWO_PYROMANCER = 0.20;
+    public static final double ROGUE_TWO_WIZARD = 0.25;
+
 }
