@@ -1,8 +1,11 @@
 package com.main;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import com.map.Map;
 import com.map.Cell;
+import com.player.Player;
+import com.player.PlayerFactory;
 
 
 public class Main {
@@ -21,9 +24,14 @@ public class Main {
 
         Map map = Map.getInstance(gameInput.getHeight(), gameInput.getLength());
         map.makeMap(inputMap);
-
         Cell[][] realMap = map.getMap();
         System.out.println(Arrays.deepToString(realMap));
+
+        PlayerFactory playerFactory = PlayerFactory.getInstance();
+        playerFactory.makeList(gameInput.getTypes(), gameInput.getXl(), gameInput.getYl());
+        ArrayList<Player> pl = playerFactory.getPlayers();
+
+        System.out.println(pl.get(0).getClass());
 
     }
 }

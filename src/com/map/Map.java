@@ -1,5 +1,6 @@
 package com.map;
 
+
 import com.constants.Constants;
 
 public class Map {
@@ -22,8 +23,6 @@ public class Map {
 
         for (i = 0; i < this.height; ++i) {
             for (j = 0; j < this.length; ++ j) {
-                System.out.println(i);
-                System.out.println(j);
                 switch(mapInput[i][j]) {
                     case 'L':
                         c = Cell.land;
