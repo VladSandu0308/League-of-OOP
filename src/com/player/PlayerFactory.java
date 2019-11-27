@@ -21,19 +21,19 @@ public class PlayerFactory {
         for (i = Constants.ZERO; i < type.size(); ++i) {
             switch(type.get(i)) {
                 case "W":
-                    c = new Wizard(Constants.WIZARD_HP, xl.get(i), yl.get(i), map);
+                    c = new Wizard("wizard", Constants.WIZARD_HP, xl.get(i), yl.get(i), map);
                     break;
                 case "K":
-                    c = new Knight(Constants.KNIGHT_HP, xl.get(i), yl.get(i), map);
+                    c = new Knight("knight",Constants.KNIGHT_HP, xl.get(i), yl.get(i), map);
                     break;
                 case "P":
-                    c = new Pyromancer(Constants.PYROMANCER_HP, xl.get(i), yl.get(i), map);
+                    c = new Pyromancer("pyro",Constants.PYROMANCER_HP, xl.get(i), yl.get(i), map);
                     break;
                 case "R":
-                    c = new Rogue(Constants.ROGUE_HP, xl.get(i), yl.get(i), map);
+                    c = new Rogue("rogue",Constants.ROGUE_HP, xl.get(i), yl.get(i), map);
                     break;
                 default:
-                    c = c = new Wizard(0,0,0, map);
+                    c = c = new Wizard("default", 0,0,0, map);
                     break;
             }
             this.addPlayer(c);
