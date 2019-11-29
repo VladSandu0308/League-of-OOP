@@ -134,13 +134,18 @@ public abstract class Player {
         this.baseDamage = 0;
     }
 
-    public void overTimeDamage() {
-        if (this.duration > 0) {
-            this.changeHP(this.damageOverTime);
-        }
-        this.duration--;
+    public final void overTimeDamage() {
         if (this.duration == 0) {
             this.stun = false;
+        }
+
+        if (this.duration > 0) {
+            this.changeHP(this.damageOverTime);
+            this.duration--;
+        }
+
+        if (this.duration == 0) {
+
             this.damageOverTime = 0;
         }
     }
