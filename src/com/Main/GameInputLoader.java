@@ -1,7 +1,6 @@
-package com.main;
+package com.Main;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import fileio.FileSystem;
 

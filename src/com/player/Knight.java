@@ -4,14 +4,17 @@ import com.constants.Constants;
 import com.map.Cell;
 
 public class Knight extends Player {
-    public Knight(String type, int hp, int x, int y, Cell[][] map) {
-        super(type, hp, x, y, map);
+
+    public Knight(String type, int hp, int x, int y, Cell[][] map, int mul) {
+        super(type, hp, x, y, map, mul);
     }
 
     public void defend(Player enemy) {
         enemy.attackFirst(this);
         enemy.attackSecond(this);
     }
+
+
 
     /*public void defend(Wizard enemy) {
         enemy.attackFirst(this, Constants.WIZARD_ONE_KNIGHT);
@@ -35,7 +38,10 @@ public class Knight extends Player {
 
     public void attackFirst(Knight enemy) {
         int damage = Constants.KNIGHT_ONE_DAMAGE + super.getLevel() * Constants.KNIGHT_ONE_DAMAGE_M;
-        double hp = (double)(enemy.getHp() / enemy.getMaxHP());
+        double hp = (float)(enemy.getHp()) / (float)(enemy.getMaxHP());
+        /*System.out.println(hp);
+        System.out.println(enemy.getHp());
+        System.out.println(enemy.getMaxHP());*/
         double limit = Constants.KNIGHT_ONE_LIMIT + super.getLevel();
         if ( hp > Constants.KNIGHT_ONE_LIMIT ) {
             if (super.getMap()[super.getX()][super.getY()] == Cell.land) {
@@ -53,7 +59,7 @@ public class Knight extends Player {
 
     public void attackFirst(Wizard enemy) {
         int damage = Constants.KNIGHT_ONE_DAMAGE + super.getLevel() * Constants.KNIGHT_ONE_DAMAGE_M;
-        double hp = (double)(enemy.getHp() / enemy.getMaxHP());
+        double hp = (float)(enemy.getHp()) / (float)(enemy.getMaxHP());
         double limit = Constants.KNIGHT_ONE_LIMIT + super.getLevel();
         if ( hp > Constants.KNIGHT_ONE_LIMIT ) {
             if (super.getMap()[super.getX()][super.getY()] == Cell.land) {
@@ -71,7 +77,7 @@ public class Knight extends Player {
 
     public void attackFirst(Rogue enemy) {
         int damage = Constants.KNIGHT_ONE_DAMAGE + super.getLevel() * Constants.KNIGHT_ONE_DAMAGE_M;
-        double hp = (double)(enemy.getHp() / enemy.getMaxHP());
+        double hp = (float)(enemy.getHp()) / (float)(enemy.getMaxHP());
         double limit = Constants.KNIGHT_ONE_LIMIT + super.getLevel();
         if ( hp > Constants.KNIGHT_ONE_LIMIT ) {
             if (super.getMap()[super.getX()][super.getY()] == Cell.land) {
@@ -89,7 +95,7 @@ public class Knight extends Player {
 
     public void attackFirst(Pyromancer enemy) {
         int damage = Constants.KNIGHT_ONE_DAMAGE + super.getLevel() * Constants.KNIGHT_ONE_DAMAGE_M;
-        double hp = (double)(enemy.getHp() / enemy.getMaxHP());
+        double hp = (float)(enemy.getHp()) / (float)(enemy.getMaxHP());
         double limit = Constants.KNIGHT_ONE_LIMIT + super.getLevel();
         if ( hp > Constants.KNIGHT_ONE_LIMIT ) {
             if (super.getMap()[super.getX()][super.getY()] == Cell.land) {

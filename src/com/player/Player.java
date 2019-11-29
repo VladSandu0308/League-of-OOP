@@ -1,5 +1,6 @@
 package com.player;
 
+import com.constants.Constants;
 import com.map.Cell;
 
 public abstract class Player {
@@ -10,6 +11,7 @@ public abstract class Player {
     private int level;
     private int x;
     private int y;
+    private int mul;
     private String type;
     private Cell[][] map;
 
@@ -18,7 +20,7 @@ public abstract class Player {
     private int duration = 0;
     private int baseDamage = 0;
 
-    public Player(String type, int hp, int x, int y, Cell[][] map) {
+    public Player(String type, int hp, int x, int y, Cell[][] map, int mul) {
         this.hp = hp;
         this.maxHP = hp;
         this.xp = 0;
@@ -27,6 +29,7 @@ public abstract class Player {
         this.x = x;
         this.y = y;
         this.map = map;
+        this.mul = mul;
     }
 
     public String getType() {
@@ -37,8 +40,16 @@ public abstract class Player {
         return hp;
     }
 
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP += maxHP;
+    }
+
     public int getXp() {
-        return xp;
+        return this.xp;
     }
 
     public void setXp(int xp) {
@@ -49,12 +60,22 @@ public abstract class Player {
         return level;
     }
 
-    public void setLevel(int xp) {
-        this.level = (xp - 250) / 50;
-        if (this.level < 0) {
-            this.level = 0;
-        }
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
+    public void level(int xp) {
+        int old = this.getLevel();
+        //System.out.println(old);
+        this.setXp(xp);
+        //System.out.println(this.getXp());
+        if (this.getXp() >= 250) {
+            this.setLevel((this.getXp() - 250) / 50 + 1);
+        }
+        if (this.getLevel() != old) {
+            this.setMaxHP((int) (this.getLevel() * mul));
+            this.setHp(this.getMaxHP());
+        }
     }
 
     public int getX() {
@@ -125,11 +146,11 @@ public abstract class Player {
     }
 
     public void moveUp() {
-        this.x ++;
+        this.x --;
     }
 
     public void moveDown() {
-        this.x --;
+        this.x ++;
     }
 
     public void moveRight() {

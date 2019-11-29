@@ -17,23 +17,23 @@ public class PlayerFactory {
     public void makeList(ArrayList<String> type, ArrayList<Integer> xl, ArrayList<Integer> yl, Cell[][] map) {
         int i = Constants.ZERO, j = Constants.ZERO;
         Player c;
-        System.out.println(type.size());
+        //System.out.println(type.size());
         for (i = Constants.ZERO; i < type.size(); ++i) {
             switch(type.get(i)) {
                 case "W":
-                    c = new Wizard("wizard", Constants.WIZARD_HP, xl.get(i), yl.get(i), map);
+                    c = new Wizard("wizard", Constants.WIZARD_HP, xl.get(i), yl.get(i), map, Constants.WIZARD_HP_M);
                     break;
                 case "K":
-                    c = new Knight("knight",Constants.KNIGHT_HP, xl.get(i), yl.get(i), map);
+                    c = new Knight("knight",Constants.KNIGHT_HP, xl.get(i), yl.get(i), map, Constants.KNIGHT_HP_M);
                     break;
                 case "P":
-                    c = new Pyromancer("pyro",Constants.PYROMANCER_HP, xl.get(i), yl.get(i), map);
+                    c = new Pyromancer("pyro",Constants.PYROMANCER_HP, xl.get(i), yl.get(i), map, Constants.PYROMANCER_HP_M);
                     break;
                 case "R":
-                    c = new Rogue("rogue",Constants.ROGUE_HP, xl.get(i), yl.get(i), map);
+                    c = new Rogue("rogue",Constants.ROGUE_HP, xl.get(i), yl.get(i), map, Constants.ROGUE_HP_M);
                     break;
                 default:
-                    c = c = new Wizard("default", 0,0,0, map);
+                    c = c = new Wizard("default", 0,0,0, map, 0);
                     break;
             }
             this.addPlayer(c);

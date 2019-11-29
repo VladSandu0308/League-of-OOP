@@ -5,14 +5,15 @@ import com.map.Cell;
 
 public class Pyromancer extends Player {
 
-    public Pyromancer(String type, int hp, int x, int y, Cell[][] map) {
-        super(type, hp, x, y, map);
+    public Pyromancer(String type, int hp, int x, int y, Cell[][] map, int mul) {
+        super(type, hp, x, y, map, mul);
     }
 
     public void defend(Player enemy) {
         enemy.attackFirst(this);
         enemy.attackSecond(this);
     }
+
 
     /*public void defend(Wizard enemy) {
         enemy.attackFirst(this, Constants.WIZARD_ONE_PYROMANCER);
@@ -36,12 +37,14 @@ public class Pyromancer extends Player {
 
     public void attackFirst(Knight enemy) {
         int damage = Constants.PYROMANCER_ONE_DAMAGE + super.getLevel() * Constants.PYROMANCER_ONE_DAMAGE_M;
-
+        //System.out.println(damage);
         if (super.getMap()[super.getX()][super.getY()] == Cell.volcanic) {
-            damage += Math.round(Constants.PYROMANCER_LAND_MODIFIER * damage);
+            damage += Constants.PYROMANCER_LAND_MODIFIER * damage;
         }
+        //System.out.println(damage);
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.PYROMANCER_ONE_KNIGHT * damage);
+        //System.out.println(damage);
         enemy.changeHP(damage);
     }
 
@@ -53,6 +56,7 @@ public class Pyromancer extends Player {
         }
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.PYROMANCER_ONE_WIZARD * damage);
+        //System.out.println(damage);
         enemy.changeHP(damage);
     }
 
@@ -82,14 +86,16 @@ public class Pyromancer extends Player {
         int damage = Constants.PYROMANCER_TWO_DAMAGE + super.getLevel() * Constants.PYROMANCER_TWO_DAMAGE_M1;
         int dur = Constants.PYROMANCER_TWO_DURTAION;
         int damageNext = Constants.PYROMANCER_TWO_DAMAGE_OT + super.getLevel() * Constants.PYROMANCER_TWO_DAMAGE_M2;
-
+        //System.out.println(damage);
         if (super.getMap()[super.getX()][super.getY()] == Cell.volcanic) {
-            damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
-            damageNext += Math.round(Constants.ROGUE_LAND_MODIFIER * damageNext);
+            damage += Math.round(Constants.PYROMANCER_LAND_MODIFIER * damage);
+            damageNext += Math.round(Constants.PYROMANCER_LAND_MODIFIER* damageNext);
         }
+        //System.out.println(damage);
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.PYROMANCER_TWO_KNIGHT * damage);
         damageNext += Math.round(Constants.PYROMANCER_TWO_KNIGHT * damageNext);
+        //System.out.println(damage);
         enemy.setDamageOverTime(damageNext);
         enemy.setDuration(dur);
         enemy.changeHP(damage);
@@ -101,8 +107,8 @@ public class Pyromancer extends Player {
         int damageNext = Constants.PYROMANCER_TWO_DAMAGE_OT + super.getLevel() * Constants.PYROMANCER_TWO_DAMAGE_M2;
 
         if (super.getMap()[super.getX()][super.getY()] == Cell.volcanic) {
-            damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
-            damageNext += Math.round(Constants.ROGUE_LAND_MODIFIER * damageNext);
+            damage += Math.round(Constants.PYROMANCER_LAND_MODIFIER * damage);
+            damageNext += Math.round(Constants.PYROMANCER_LAND_MODIFIER* damageNext);
         }
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.PYROMANCER_TWO_WIZARD * damage);
@@ -118,8 +124,8 @@ public class Pyromancer extends Player {
         int damageNext = Constants.PYROMANCER_TWO_DAMAGE_OT + super.getLevel() * Constants.PYROMANCER_TWO_DAMAGE_M2;
 
         if (super.getMap()[super.getX()][super.getY()] == Cell.volcanic) {
-            damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
-            damageNext += Math.round(Constants.ROGUE_LAND_MODIFIER * damageNext);
+            damage += Math.round(Constants.PYROMANCER_LAND_MODIFIER * damage);
+            damageNext += Math.round(Constants.PYROMANCER_LAND_MODIFIER* damageNext);
         }
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.PYROMANCER_TWO_ROGUE * damage);
@@ -135,8 +141,8 @@ public class Pyromancer extends Player {
         int damageNext = Constants.PYROMANCER_TWO_DAMAGE_OT + super.getLevel() * Constants.PYROMANCER_TWO_DAMAGE_M2;
 
         if (super.getMap()[super.getX()][super.getY()] == Cell.volcanic) {
-            damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
-            damageNext += Math.round(Constants.ROGUE_LAND_MODIFIER * damageNext);
+            damage += Math.round(Constants.PYROMANCER_LAND_MODIFIER * damage);
+            damageNext += Math.round(Constants.PYROMANCER_LAND_MODIFIER* damageNext);
         }
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.PYROMANCER_TWO_PYROMANCER * damage);

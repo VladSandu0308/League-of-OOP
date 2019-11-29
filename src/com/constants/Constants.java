@@ -12,10 +12,10 @@ public final class Constants {
     public static final int PYROMANCER_HP = 500;
     public static final int ROGUE_HP = 600;
 
-    public static final double KNIGHT_HP_M = 80;
-    public static final double WIZARD_HP_M = 30;
-    public static final double PYROMANCER_HP_M = 50;
-    public static final double ROGUE_HP_M = 40;
+    public static final int KNIGHT_HP_M = 80;
+    public static final int WIZARD_HP_M = 30;
+    public static final int PYROMANCER_HP_M = 50;
+    public static final int ROGUE_HP_M = 40;
 
     public static final int ROGUE_ONE_DAMAGE = 200;
     public static final int ROGUE_TWO_DAMAGE = 40;
@@ -25,10 +25,10 @@ public final class Constants {
     public static final int ROGUE_TWO_DURTAION = 3;
 
     public static final double ROGUE_LAND_MODIFIER = 0.15f;
-    public static final double ROGUE_LAND_BONUS = 1.5f;
+    public static final double ROGUE_LAND_BONUS = 0.5f;
 
     public static final double ROGUE_ONE_ROGUE = 0.20f;
-    public static final double ROGUE_ONE_KNIGHT = -0.10f;
+    public static final double ROGUE_ONE_KNIGHT = -0.1f;
     public static final double ROGUE_ONE_PYROMANCER = 0.25f;
     public static final double ROGUE_ONE_WIZARD = 0.25f;
 

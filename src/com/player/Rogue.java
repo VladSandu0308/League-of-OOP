@@ -4,8 +4,9 @@ import com.constants.Constants;
 import com.map.Cell;
 
 public class Rogue extends Player {
-    public Rogue(String type, int hp, int x, int y, Cell[][] map) {
-        super(type, hp, x, y, map);
+
+    public Rogue(String type, int hp, int x, int y, Cell[][] map, int mul) {
+        super(type, hp, x, y, map, mul);
     }
 
     int count = 0;
@@ -14,6 +15,7 @@ public class Rogue extends Player {
         enemy.attackFirst(this);
         enemy.attackSecond(this);
     }
+
     /*public void defend(Wizard enemy) {
         enemy.attackFirst(this, Constants.WIZARD_ONE_ROGUE);
         enemy.attackSecond(this, Constants.WIZARD_TWO_ROGUE);
@@ -54,14 +56,16 @@ public class Rogue extends Player {
 
     public void attackFirst(Wizard enemy) {
         int damage = Constants.ROGUE_ONE_DAMAGE + super.getLevel() * 20;
-
+        //System.out.println(damage);
         if (super.getMap()[super.getX()][super.getY()] == Cell.woods) {
-            damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
             if (count % 3 == 0) {
                 damage += Math.round(Constants.ROGUE_LAND_BONUS * damage);
             }
+            damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
+
         }
         enemy.setBaseDamage(damage);
+        //System.out.println(enemy.getBaseDamage());
         damage += Math.round(Constants.ROGUE_ONE_WIZARD * damage);
         enemy.changeHP(damage);
         count++;
@@ -97,9 +101,11 @@ public class Rogue extends Player {
             }
         }
         enemy.setBaseDamage(damage);
-        damage += Math.round(Constants.ROGUE_ONE_KNIGHT * damage);
+        //System.out.println(damage);
+        //System.out.println(damage + (float)(Constants.ROGUE_ONE_KNIGHT) * damage);
+        damage = (int) Math.round(damage + (float)(Constants.ROGUE_ONE_KNIGHT) * damage);
         enemy.changeHP(damage);
-
+        //System.out.println(damage);
         count++;
 
     }
@@ -148,14 +154,15 @@ public class Rogue extends Player {
         int damage = Constants.ROGUE_TWO_DAMAGE + super.getLevel() * 10;
         int dur = Constants.ROGUE_TWO_DURTAION;
 
-
+        //System.out.println(damage);
         if (super.getMap()[super.getX()][super.getY()] == Cell.woods) {
             damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
             dur *= Constants.TWO;
         }
+        //System.out.println(damage);
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.ROGUE_TWO_KNIGHT * damage);
-
+        //System.out.println(damage);
         enemy.setDamageOverTime(damage);
         enemy.setDuration(dur);
         enemy.changeHP(damage);
@@ -172,6 +179,7 @@ public class Rogue extends Player {
             damage += Math.round(Constants.ROGUE_LAND_MODIFIER * damage);
             dur *= Constants.TWO;
         }
+        //System.out.println(enemy.getBaseDamage());
         enemy.setBaseDamage(damage);
         damage += Math.round(Constants.ROGUE_TWO_WIZARD * damage);
 
